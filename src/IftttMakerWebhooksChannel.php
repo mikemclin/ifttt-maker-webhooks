@@ -2,9 +2,9 @@
 
 namespace NotificationChannels\IftttMakerWebhooks;
 
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Events\NotificationFailed;
+use Illuminate\Notifications\Notification;
 use NotificationChannels\IftttMakerWebhooks\Exceptions\CouldNotSendNotification;
 
 class IftttMakerWebhooksChannel
@@ -13,6 +13,7 @@ class IftttMakerWebhooksChannel
      * @var IftttMakerWebhooksClient
      */
     protected $client;
+
     /**
      * @var Dispatcher
      */
@@ -22,7 +23,7 @@ class IftttMakerWebhooksChannel
      * IftttMakerWebhooksChannel constructor.
      *
      * @param IftttMakerWebhooksClient $client
-     * @param Dispatcher               $events
+     * @param Dispatcher $events
      */
     public function __construct(IftttMakerWebhooksClient $client, Dispatcher $events)
     {
@@ -33,7 +34,7 @@ class IftttMakerWebhooksChannel
     /**
      * Send the given notification.
      *
-     * @param  mixed                                  $notifiable
+     * @param  mixed $notifiable
      * @param  \Illuminate\Notifications\Notification $notification
      * @return mixed
      */
@@ -53,9 +54,7 @@ class IftttMakerWebhooksChannel
 
             return $this->client->send($trigger);
         } catch (\Exception $exception) {
-            $this->events->fire(
-                new NotificationFailed($notifiable, $notification, 'ifttt-maker-webhooks', ['message' => $exception->getMessage()])
-            );
+            $this->events->fire(new NotificationFailed($notifiable, $notification, 'ifttt-maker-webhooks', ['message' => $exception->getMessage()]));
         }
     }
 

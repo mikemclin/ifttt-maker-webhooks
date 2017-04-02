@@ -11,9 +11,7 @@ class IftttMakerWebhooksServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->when(IftttMakerWebhooksChannel::class)
-            ->needs(IftttMakerWebhooksClient::class)
-            ->give(function () {
+        $this->app->when(IftttMakerWebhooksChannel::class)->needs(IftttMakerWebhooksClient::class)->give(function () {
                 return new IftttMakerWebhooksClient();
             });
     }
