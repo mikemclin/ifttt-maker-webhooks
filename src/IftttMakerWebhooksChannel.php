@@ -2,9 +2,9 @@
 
 namespace NotificationChannels\IftttMakerWebhooks;
 
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Events\NotificationFailed;
-use Illuminate\Notifications\Notification;
 use NotificationChannels\IftttMakerWebhooks\Exceptions\CouldNotSendNotification;
 
 class IftttMakerWebhooksChannel
@@ -44,12 +44,13 @@ class IftttMakerWebhooksChannel
             if (is_string($trigger)) {
                 $trigger = new IftttMakerWebhooksRequest($trigger);
             }
-            if (!$trigger instanceof IftttMakerWebhooksRequest) {
+            if (! $trigger instanceof IftttMakerWebhooksRequest) {
                 throw CouldNotSendNotification::serviceRespondedWithAnError('`$notification::toIftttMakerWebhooks()` must return an `IftttMakerWebhooksRequest` instance or a string.');
             }
-            if (!isset($trigger->key)) {
+            if (! isset($trigger->key)) {
                 $trigger->key = $this->getKey($notifiable);
             }
+
             return $this->client->send($trigger);
         } catch (\Exception $exception) {
             $this->events->fire(

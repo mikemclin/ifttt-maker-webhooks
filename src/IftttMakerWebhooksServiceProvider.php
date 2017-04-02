@@ -17,6 +17,7 @@ class IftttMakerWebhooksServiceProvider extends ServiceProvider
                 return new IftttMakerWebhooksClient();
             });
     }
+
     /**
      * Register the application services.
      */
