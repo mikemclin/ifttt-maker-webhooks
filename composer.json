@@ -1,0 +1,39 @@
+{
+    "name": "laravel-notification-channels/ifttt-maker-webhooks",
+    "description": "IFTTT Maker Webhooks Notifications Channel for Laravel",
+    "homepage": "https://github.com/laravel-notification-channels/ifttt-maker-webhooks",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike McLin",
+            "email": "mclinmike@gmail.com",
+            "homepage": "http://mikemclin.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/notifications": "^5.3",
+        "illuminate/support": "^5.1|^5.2|^5.3"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.5",
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "NotificationChannels\\IftttMakerWebhooks\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NotificationChannels\\IftttMakerWebhooks\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
