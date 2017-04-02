@@ -2,9 +2,9 @@
 
 namespace NotificationChannels\IftttMakerWebhooks;
 
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Events\NotificationFailed;
-use Illuminate\Notifications\Notification;
 use NotificationChannels\IftttMakerWebhooks\Exceptions\CouldNotSendNotification;
 
 class IftttMakerWebhooksChannel
